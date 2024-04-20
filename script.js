@@ -3,6 +3,9 @@ const searchInput = document.getElementById('searchInput');
 const searchCriteria = document.getElementById('searchCriteria');
 const resultsContainer = document.getElementById('resultsContainer');
 const recipeDetails = document.getElementById('recipeDetails');
+const popularIngredientsContainer = document.getElementById('popularIngredients');
+const randomMealsContainer = document.getElementById('randomMeals');
+const randomIngredientsContainer = document.getElementById('randomIngredients');
 
 searchButton.addEventListener('click', search);
 
@@ -121,7 +124,47 @@ function displayRecipeDetails(recipeName) {
         });
 }
 
-// List of categorires, ingredients, and areas
+function displayIngredients(ingredients, container) {
+    container.innerHTML = '';
+
+    ingredients.forEach(ingredient => {
+        const ingredientItem = document.createElement('div');
+        ingredientItem.classList.add('ingredient-item');
+
+        const image = document.createElement('img');
+        image.src = `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png`;
+        image.alt = ingredient.strIngredient;
+        ingredientItem.appendChild(image);
+
+        const description = document.createElement('p');
+        description.textContent = ingredient.strDescription || 'No description available';
+        ingredientItem.appendChild(description);
+
+        container.appendChild(ingredientItem);
+    });
+}
+
+function displayMeals(meals, container) {
+    container.innerHTML = '';
+
+    meals.forEach(meal => {
+        const mealItem = document.createElement('div');
+        mealItem.classList.add('meal-item');
+
+        const image = document.createElement('img');
+        image.src = meal.strMealThumb;
+        image.alt = meal.strMeal;
+        mealItem.appendChild(image);
+
+        const description = document.createElement('p');
+        description.textContent = meal.strInstructions.slice(0, 100) + '...'; // Mostramos solo las primeras 100 caracteres de las instrucciones
+        mealItem.appendChild(description);
+
+        container.appendChild(mealItem);
+    });
+}
+
+// List of categories, ingredients, and areas
 const getListHttp = (category, http) => {
     return fetchHttp(
         `https://www.themealdb.com/api/json/v1/1/list.php?${category}=list`
@@ -161,4 +204,31 @@ const populateCategories = async () => {
     });
 };
 
-populateCategories()
+populateCategories();
+
+// Load popular ingredients
+fetch('https://www.themealdb.com/api/json/v1/1/popular.php')
+    .then(response => response.json())
+    .then(data => {
+        const popularIngredients = data.ingredients.slice(0, 5);
+        displayIngredients(popularIngredients, popularIngredientsContainer);
+    })
+    .catch(error => console.error('Error fetching popular ingredients:', error));
+
+// Load random meals
+fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then(response => response.json())
+    .then(data => {
+        const randomMeals = data.meals.slice(0, 6);
+        displayMeals(randomMeals, randomMealsContainer);
+    })
+    .catch(error => console.error('Error fetching random meals:', error));
+
+// Load random ingredients
+fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then(response => response.json())
+    .then(data => {
+        const randomIngredients = data.meals[0].strIngredient.slice(0, 5);
+        displayIngredients(randomIngredients, randomIngredientsContainer);
+    })
+    .catch(error => console.error('Error fetching random ingredients:', error));
