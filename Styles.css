@@ -141,3 +141,62 @@ header h1 {
 #recipeDetails li {
     margin-bottom: 10px;
 }
+
+#newSearchButton {
+    background-color: #ff9f4d; /* Color de fondo del botón de búsqueda */
+    border: none; /* Quitamos el borde para darle un aspecto más limpio */
+    cursor: pointer;
+    padding: 8px 12px; /* Espaciado interno */
+    border-radius: 20px; /* Borde redondo */
+    color: #ffffff; /* Color de los títulos */
+    text-shadow: 2px 2px 4px rgba(255, 230, 0, 0.5); /* Efecto de sombra en los títulos */
+    font-family: 'Pacifico', cursive; /* Tipo de letra para títulos */
+    font-size: 24px;
+    text-align: center;
+    display: show; /* Ocultamos el botón inicialmente */
+    position: relative; /* Establecemos la posición relativa para poder agregar efectos */
+    overflow: hidden; /* Ocultamos cualquier contenido que se desborde del botón */
+    transition: transform 0.3s ease-out; /* Agregamos una transición suave al hacer clic en el botón */
+  }
+  
+  #newSearchButton:before {
+    content: ""; /* Agregamos un pseudo-elemento antes del texto del botón */
+    position: absolute; /* Establecemos la posición absoluta para poder moverlo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 159, 77, 0.2); /* Color de fondo semi-transparente */
+    transform: scaleX(0); /* Inicialmente, el pseudo-elemento está oculto */
+    transition: transform 0.3s ease-out; /* Agregamos una transición suave al hacer clic en el botón */
+  }
+  
+  #newSearchButton:hover:before {
+    transform: scaleX(1); /* Al pasar el mouse sobre el botón, el pseudo-elemento se expande horizontalmente */
+  }
+  
+  #newSearchButton:active {
+    transform: translateY(4px); /* Al hacer clic en el botón, se mueve ligeramente hacia abajo */
+  }
+  
+  #newSearchButton:active:before {
+    transform: scaleX(0); /* Al hacer clic en el botón, el pseudo-elemento se contrae horizontalmente */
+  }
+
+  footer {
+    background-color: #ff9f4d;
+    color: #ffffff70;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-text {
+    margin: 5px 0;
+  }
+  

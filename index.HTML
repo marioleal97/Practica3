@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yummy Delicius</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yummy Delicius</title>
+  <link rel="icon" href="https://img.icons8.com/office/16/steak-rare.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header>
-        <h1>Yummy Delicius</h1>
-        <select id="searchCriteria">
-            <option value="name">Name</option>
-            <option value="ingredient">Ingredient</option>
-            <option value="category">Category</option>
-            <option value="area">Area</option>
-        </select>
-        <input type="text" id="searchInput" placeholder="Search...">
-        <button id="searchButton"><img src="https://img.icons8.com/?size=64&id=42848&format=png" alt="Search"></button>
-    </header>
-    <main>
-        <div id="popularIngredientsContainer"></div>
-        <div id="randomMealsContainer"></div>
-        <div id="randomIngredientsContainer"></div>
-        <div id="resultsContainer"></div>
-        <div id="recipeDetails"></div>
-    </main>
-    <script src="script.js"></script>
+  <header>
+    <h1>Yummy Delicius</h1>
+    <select id="searchCriteria">
+      <option value="name">Name</option>
+      <option value="ingredient">Ingredient</option>
+      <option value="category">Category</option>
+      <option value="area">Area</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button id="searchButton"><img src="https://img.icons8.com/?size=64&id=42848&format=png" alt="Search"></button>
+    <button id="newSearchButton">RESET</button>
+  </header>
+  <main>
+    <div id="resultsContainer"></div>
+    <div id="recipeDetails"></div>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <p class="footer-text">Hecho por Mario Leal</p>
+      <p class="footer-text">2024 - Todos los derechos reservados</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
+
 </html>
