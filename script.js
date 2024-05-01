@@ -157,20 +157,4 @@ function newSearch() {
   clearResults();
   document.querySelector("header").style.display = "flex";
 }
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .footer-text {
-    margin: 5px 0;
-  }
-  
+
